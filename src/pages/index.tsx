@@ -1,11 +1,25 @@
 import Head from "next/head";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import Footer from "@/components/footer/footer";
 import Homepage from "@/components/homepage/homepage";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
+import News from "@/components/news/news";
 
 export default function Home() {
+  const [posts, setPosts] = useState([] as models.IGetPosts[]);
+  const getNewsPosts = async () => {
+    try {
+      const res = await fetch("/api/news");
+      const newsResponse: models.IResponse = res.json();
+      setPosts(newsResponse?.data?.children);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  useEffect(() => {
+    getNewsPosts();
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -33,7 +47,8 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.container}>
-        <Homepage />
+        {/* <Homepage /> */}
+        <News newsPosts={posts} />
       </main>
       <Footer />
     </div>
