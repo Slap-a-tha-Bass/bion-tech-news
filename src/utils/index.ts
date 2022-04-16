@@ -32,3 +32,12 @@ export function serializeQuery(query: any): string {
 
   return query;
 }
+const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+export function getThumbnail(thumbnail: any): string {
+  if (isNil(thumbnail) || !urlRegex.test(thumbnail)) {
+    return "/logos/subreddit.png";
+  }
+
+  return thumbnail;
+}
