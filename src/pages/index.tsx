@@ -4,56 +4,10 @@ import Footer from "@/components/footer/footer";
 import Homepage from "@/components/homepage/homepage";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
-import News from "@/components/news/news";
-import type { NextPage, GetServerSideProps } from "next";
-import { BIO_POSTS, isEmpty, serializeQuery, SUFFIX } from "@/utils";
+import type { NextPage } from "next";
+import Link from "next/link";
 
-interface IServerProps {
-  response: models.IResponse;
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const query = context.query;
-    let biotechNews = query.s;
-    if (isEmpty(biotechNews)) {
-      biotechNews = BIO_POSTS;
-    }
-    delete query.s;
-
-    const response = await fetch(
-      `${biotechNews}${serializeQuery(query)}${SUFFIX}`
-    );
-
-    const data: models.IResponse = await response.json();
-    return {
-      props: {
-        response: data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        response: null,
-      },
-    };
-  }
-};
-
-const Home: NextPage<IServerProps> = ({ response }: IServerProps) => {
-  // const [posts, setPosts] = useState([] as models.INewsPost[]);
-  // const getNewsPosts = async () => {
-  //   try {
-  //     const res = await fetch("/api/news");
-  //     const newsResponse: models.IResponse = await res.json();
-  //     setPosts(newsResponse?.data?.children);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getNewsPosts();
-  // }, []);
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -79,10 +33,14 @@ const Home: NextPage<IServerProps> = ({ response }: IServerProps) => {
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="manifest" href="/favicon/site.webmanifest" /> */}
       </Head>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className={styles.container}>
-        {/* <Homepage /> */}
-        <News newsPosts={response?.data?.children} />
+        <Link href="/reddit-news">
+          <h2 className="text-sky-600 text-2xl text-center pt-8 cursor-pointer hover:text-sky-400">
+            Click here to enter
+          </h2>
+        </Link>
+        <Homepage />
       </main>
       <Footer />
     </div>

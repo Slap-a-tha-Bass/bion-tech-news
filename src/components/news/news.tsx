@@ -16,7 +16,7 @@ export default function News({ newsPosts }: NewsProps) {
           return (
             <a
               key={p.data.id}
-              className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 my-2 hover:border-gray-400"
+              className="relative rounded-lg border border-gray-300 bg-sky-100 hover:bg-sky-600 px-6 py-5 shadow-sm flex items-center space-x-3 my-2 hover:border-gray-400"
               href={isEmpty(p.data.permalink) ? BIO_POSTS : `${BASE_URL}${p.data.permalink}`}
               target="_blank"
               rel="noreferrer"

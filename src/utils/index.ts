@@ -1,7 +1,12 @@
 export const BASE_URL = "https://reddit.com";
-export const SUBREDDIT_URL = `${BASE_URL}/r/`;
-export const BIO_POSTS = `${SUBREDDIT_URL}biotech`;
+export const SUBREDDIT_URL = `/r/`;
+export const BIO_POSTS = `biotechnews`;
 export const SUFFIX = ".json";
+
+export const BASE_URL2 = "https://newsapi.org/v2/"
+export const EVERYTHING = "everything"
+export const BIO_POSTS2 = `?q=biotech`
+export const API_KEY = `&apiKey5268b70ac71347e584d205448b042978`;
 
 export function isNil(obj: any): boolean {
   return obj === undefined || obj === null;
@@ -36,7 +41,8 @@ const urlRegex = /(https?:\/\/[^\s]+)/g;
 
 export function getThumbnail(thumbnail: any): string {
   if (isNil(thumbnail) || !urlRegex.test(thumbnail)) {
-    return "/logos/subreddit.png";
+    return "";
+    // TODO add default image
   }
 
   return thumbnail;
