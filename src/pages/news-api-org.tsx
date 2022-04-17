@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
 import type { NextPage, GetServerSideProps } from "next";
 import {
+  API_KEY2,
   BASE_URL2,
   BIO_POSTS,
   BIO_POSTS2,
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     delete query.s;
 
     const response = await fetch(
-      `${BASE_URL2}${EVERYTHING}${biotechNews}${PRE_API}${process.env.REACT_APP_API_KEY}${serializeQuery(
+      `${BASE_URL2}${EVERYTHING}${biotechNews}${PRE_API}${API_KEY2}${serializeQuery(
         query
       )}`
     );
