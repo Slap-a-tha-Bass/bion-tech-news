@@ -24,7 +24,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           console.log(error);
           res.status(400);
       }
-
       break;
     default:
       res.send(404);

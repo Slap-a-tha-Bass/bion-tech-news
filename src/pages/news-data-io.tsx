@@ -9,6 +9,7 @@ import {
   BIO_POSTS,
   BIO_POSTS3,
   isEmpty,
+  PRE_API3,
   serializeQuery,
 } from "@/utils";
 import NewsDataIo from "@/components/news/news-data-io";
@@ -21,44 +22,47 @@ interface IServerProps {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = context.query;
   let biotechNews = query.s;
-  
+
   if (isEmpty(biotechNews)) {
-    biotechNews = 'biotech';
+    biotechNews = BIO_POSTS3;
   }
 
   try {
     delete query.s;
 
     const response = await fetch(
-      `${BASE_URL3}${BIO_POSTS3}${API_KEY3}&language=en&q=${biotechNews}${serializeQuery(
+      `${BASE_URL3}${PRE_API3}${API_KEY3}&language=en&q=${biotechNews}${serializeQuery(
         query
       )}`
     );
-        console.log({response});
     const data: models.INewsDataResponse = await response.json();
+ 
     return {
       props: {
         response: data,
-        biotechNews,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        response: null,
-        biotechNews,
-      },
-    };
-  }
-};
+          biotechNews,
+        },
+      };
+    } catch (error) {
+      return {
+        props: {
+          response: null,
+          biotechNews,
+        },
+      };
+    }
+  };
 
-const NewsDataIoNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerProps) => {
+const NewsDataIoNews: NextPage<IServerProps> = ({
+  response,
+  biotechNews,
+}: IServerProps) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Biotech | News</title>
+        <title>BiON| NewsData</title>
         <meta name="description" content="Spreading latest news in Biotech" />
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/favicon/apple-touch-icon.png"
@@ -76,12 +80,16 @@ const NewsDataIoNews: NextPage<IServerProps> = ({ response, biotechNews }: IServ
           href="/favicon/favicon-16x16.png"
         />
         <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="manifest" href="/favicon/site.webmanifest" /> */}
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <Navbar />
       <main className={styles.container}>
         <div className="absolute top-20 text-xs text-center w-full">
-          <span>{!isEmpty(biotechNews) && biotechNews !== BIO_POSTS ? `${biotechNews}` : '' }</span>
+          <span>
+            {!isEmpty(biotechNews) && biotechNews !== BIO_POSTS
+              ? `${biotechNews}`
+              : ""}
+          </span>
         </div>
         <NewsDataIo newsPosts={response?.results} />
       </main>
@@ -90,4 +98,3 @@ const NewsDataIoNews: NextPage<IServerProps> = ({ response, biotechNews }: IServ
   );
 };
 export default NewsDataIoNews;
-

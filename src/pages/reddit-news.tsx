@@ -53,9 +53,9 @@ const RedditNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
   return (
     <div className={styles.container}>
       <Head>
-        <title>Biotech | News</title>
+        <title>BiON | Reddit</title>
         <meta name="description" content="Spreading latest news in Biotech" />
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/favicon/apple-touch-icon.png"
@@ -73,7 +73,7 @@ const RedditNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
           href="/favicon/favicon-16x16.png"
         />
         <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="manifest" href="/favicon/site.webmanifest" /> */}
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <Navbar />
       <main className={styles.container}>

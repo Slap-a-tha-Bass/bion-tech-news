@@ -48,6 +48,7 @@ declare module models {
     link: string;
     creator: string | [];
     image_url: string;
+    source_id: string;
   }
   interface INewsDataResponse {
     results: INewsDataPost[];

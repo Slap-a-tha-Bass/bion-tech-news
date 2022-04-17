@@ -14,6 +14,10 @@ import {
   serializeQuery,
 } from "@/utils";
 import ApiNewsOrg from "@/components/news/news-api-org";
+import NewsApiLogo from "@/logos/newsApiLogo";
+import NewsDataIoLogo from "@/logos/newsDataIoLogo";
+import Link from "next/link";
+import { BsReddit } from "react-icons/bs";
 
 interface IServerProps {
   response: models.INewsApiResponse;
@@ -54,13 +58,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-const NewsApiOrg: NextPage<IServerProps> = ({ response, biotechNews }: IServerProps) => {
+const NewsApiOrg: NextPage<IServerProps> = ({
+  response,
+  biotechNews,
+}: IServerProps) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Biotech | News</title>
+        <title>BiON | NewsAPI</title>
         <meta name="description" content="Spreading latest news in Biotech" />
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/favicon/apple-touch-icon.png"
@@ -77,13 +84,21 @@ const NewsApiOrg: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="manifest" href="/favicon/site.webmanifest" /> */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <Navbar />
       <main className={styles.container}>
         <div className="absolute top-20 text-xs text-center w-full">
-          {biotechNews === "biotech" ? "" : <span>{!isEmpty(biotechNews) && biotechNews !== BIO_POSTS ? `${biotechNews}` : '' }</span>}
+          {biotechNews === "biotech" ? (
+            ""
+          ) : (
+            <span>
+              {!isEmpty(biotechNews) && biotechNews !== BIO_POSTS
+                ? `${biotechNews}`
+                : ""}
+            </span>
+          )}
         </div>
         <ApiNewsOrg newsPosts={response?.articles} />
       </main>
@@ -92,4 +107,3 @@ const NewsApiOrg: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
   );
 };
 export default NewsApiOrg;
-

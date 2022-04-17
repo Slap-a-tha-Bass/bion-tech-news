@@ -22,7 +22,7 @@ export default function ApiNewsOrg({ newsPosts }: ApiNewsOrgProps) {
               rel="noreferrer"
             >
               <div className="flex-shrink-0">
-                {<img className="h-10" src={getThumbnail(p.urlToImage)} alt="" />}
+                <img className="h-10" src={getThumbnail(p.urlToImage)} alt={p.source.id} />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900">{p.title}</p>

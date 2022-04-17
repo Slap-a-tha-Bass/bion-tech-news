@@ -10,8 +10,9 @@ export const PRE_API = `&apiKey=`
 export const API_KEY2 = '5268b70ac71347e584d205448b042978';
 
 export const BASE_URL3 = "https://newsdata.io/api/"
-export const BIO_POSTS3 = "1/news?apikey="
+export const PRE_API3 = "1/news?apikey="
 export const API_KEY3 = 'pub_6571fb4380123c993a6765f4596b6adc45fe';
+export const BIO_POSTS3 = `biotech`;
 
 
 export function isNil(obj: any): boolean {
