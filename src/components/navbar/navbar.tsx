@@ -6,7 +6,12 @@ export default function Navbar() {
   const router = useRouter();
   const onSubmit: FormEventHandler = (e) => {
     e.preventDefault();
-    router.push(`/reddit-news/?s=${search}`);
+    if (router.pathname === "/reddit-news") {
+      router.push(`/reddit-news/?s=${search}`);
+    }
+    if (router.pathname === "/news-api-org") {
+      router.push(`/news-api-org/?s=${search}`);
+    }
   }
   return (
     <nav className="sticky top-0 z-50">
@@ -32,7 +37,7 @@ export default function Navbar() {
               />
             </form>
           </div>
-          <h2 className="text-2xl text-sky-600">Biotech News |</h2>
+          {router.pathname === "/reddit-news" ? <h2 className="text-2xl text-sky-600">Reddit Biotech |</h2> : <h2 className="text-2xl text-sky-600">Biotech News |</h2>}
         </div>
       </div>
     </nav>

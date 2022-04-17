@@ -16,13 +16,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const response = await fetch(
           `${biotechNews}${serializeQuery(query)}${SUFFIX}`
         );
-        console.log({response, biotechNews, SUFFIX});
 
-        const json: models.IResponse = await response.json();
+        const data: models.IRedditResponse = await response.json();
 
-        console.log({json});
-
-        res.status(200).json(json);
+        res.status(200).json(data);
       } catch (error) {
           console.log(error);
           res.status(400);

@@ -4,9 +4,13 @@ export const BIO_POSTS = `biotechnews`;
 export const SUFFIX = ".json";
 
 export const BASE_URL2 = "https://newsapi.org/v2/"
-export const EVERYTHING = "everything"
-export const BIO_POSTS2 = `?q=biotech`
-export const API_KEY = `&apiKey5268b70ac71347e584d205448b042978`;
+export const EVERYTHING = "everything?q="
+export const BIO_POSTS2 = `biotech`
+export const PRE_API = `&apiKey=`
+
+export const BASE_URL3 = "https://newsdata.io/api/"
+export const BIO_POSTS3 = "1/news?apikey="
+export const NewsData_API_KEY = "pub_6571fb4380123c993a6765f4596b6adc45fe";
 
 export function isNil(obj: any): boolean {
   return obj === undefined || obj === null;

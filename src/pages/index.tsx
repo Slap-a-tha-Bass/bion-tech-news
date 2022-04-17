@@ -33,13 +33,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="manifest" href="/favicon/site.webmanifest" /> */}
       </Head>
-      {/* <Navbar /> */}
       <main className={styles.container}>
-        <Link href="/reddit-news">
-          <h2 className="text-sky-600 text-2xl text-center pt-8 cursor-pointer hover:text-sky-400">
-            Click here to enter
-          </h2>
-        </Link>
         <Homepage />
       </main>
       <Footer />
