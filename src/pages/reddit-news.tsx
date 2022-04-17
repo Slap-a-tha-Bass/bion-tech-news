@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import Footer from "@/components/footer/footer";
-import Homepage from "@/components/homepage/homepage";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
 import News from "@/components/news/news";
@@ -26,7 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (isEmpty(biotechNews)) {
     biotechNews = BIO_POSTS;
   }
-  const REDDIT_NEWS = `reddit-news/`
   try {
     delete query.s;
 
@@ -35,11 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         query
       )}`
     );
-    // const response = await fetch(
-    //   `${BASE_URL2}${EVERYTHING}${BIO_POSTS2}${API_KEY}${serializeQuery(
-    //     query
-    //   )}`
-    // );
     const data: models.IRedditResponse = await response.json();
     return {
       props: {
@@ -88,7 +80,6 @@ const RedditNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
         <div className="absolute top-20 text-xs text-center w-full">
           <span>{!isEmpty(biotechNews) && biotechNews !== BIO_POSTS ? `/r/${biotechNews}` : '' }</span>
         </div>
-        {/* <Homepage /> */}
         <News newsPosts={response?.data?.children} />
       </main>
       <Footer />

@@ -82,7 +82,6 @@ const NewsDataIoNews: NextPage<IServerProps> = ({ response, biotechNews }: IServ
         <div className="absolute top-20 text-xs text-center w-full">
           <span>{!isEmpty(biotechNews) && biotechNews !== BIO_POSTS ? `${biotechNews}` : '' }</span>
         </div>
-        {/* <Homepage /> */}
         <NewsDataIo newsPosts={response?.results} />
       </main>
       <Footer />
