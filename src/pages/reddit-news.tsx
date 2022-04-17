@@ -7,12 +7,8 @@ import styles from "@/styles/Home.module.css";
 import News from "@/components/news/news";
 import type { NextPage, GetServerSideProps } from "next";
 import {
-  API_KEY,
   BASE_URL,
-  BASE_URL2,
   BIO_POSTS,
-  BIO_POSTS2,
-  EVERYTHING,
   isEmpty,
   serializeQuery,
   SUBREDDIT_URL,
@@ -20,7 +16,7 @@ import {
 } from "@/utils";
 
 interface IServerProps {
-  response: models.IResponse;
+  response: models.IRedditResponse;
   biotechNews: string;
 }
 
@@ -44,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     //     query
     //   )}`
     // );
-    const data: models.IResponse = await response.json();
+    const data: models.IRedditResponse = await response.json();
     return {
       props: {
         response: data,

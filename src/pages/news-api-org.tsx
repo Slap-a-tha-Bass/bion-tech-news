@@ -1,13 +1,9 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import Footer from "@/components/footer/footer";
-import Homepage from "@/components/homepage/homepage";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
-import News from "@/components/news/news";
 import type { NextPage, GetServerSideProps } from "next";
 import {
-  BASE_URL,
   BASE_URL2,
   BIO_POSTS,
   BIO_POSTS2,
@@ -15,10 +11,7 @@ import {
   isEmpty,
   PRE_API,
   serializeQuery,
-  SUBREDDIT_URL,
-  SUFFIX,
 } from "@/utils";
-import { data } from "autoprefixer";
 import ApiNewsOrg from "@/components/news/news-api-org";
 
 interface IServerProps {
