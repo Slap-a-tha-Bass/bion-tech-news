@@ -1,5 +1,4 @@
-import { BASE_URL, BIO_POSTS, getThumbnail, isArray, isEmpty } from "@/utils";
-import { useEffect, useState } from "react";
+import { BIO_POSTS, getThumbnail, isArray, isEmpty } from "@/utils";
 
 export default function ApiNewsOrg({ newsPosts }: ApiNewsOrgProps) {
   if (!isArray(newsPosts) || newsPosts.length === 0) {
@@ -22,11 +21,21 @@ export default function ApiNewsOrg({ newsPosts }: ApiNewsOrgProps) {
               rel="noreferrer"
             >
               <div className="flex-shrink-0">
-                <img className="h-10" src={getThumbnail(p.urlToImage)} alt={p.source.id} />
+                <img
+                  className="h-10"
+                  src={getThumbnail(p.urlToImage)}
+                  alt={p.source.id}
+                />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900">{p.title}</p>
-                {p.author === null ? `` : <p className="text-xs text-gray-500 truncate">by {p.author}</p>}
+                {p.author === null ? (
+                  ``
+                ) : (
+                  <p className="text-xs text-gray-500 truncate">
+                    by {p.author}
+                  </p>
+                )}
               </div>
             </a>
           );

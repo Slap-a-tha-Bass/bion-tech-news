@@ -3,6 +3,7 @@ import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
 import News from "@/components/news/news";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import type { NextPage, GetServerSideProps } from "next";
 import {
   BASE_URL,
@@ -12,6 +13,7 @@ import {
   SUBREDDIT_URL,
   SUFFIX,
 } from "@/utils";
+import Link from "next/link";
 
 interface IServerProps {
   response: models.IRedditResponse;
@@ -24,6 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (isEmpty(biotechNews)) {
     biotechNews = BIO_POSTS;
   }
+
   try {
     delete query.s;
 
@@ -49,7 +52,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-const RedditNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerProps) => {
+const RedditNews: NextPage<IServerProps> = ({
+  response,
+  biotechNews,
+}: IServerProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -78,13 +84,28 @@ const RedditNews: NextPage<IServerProps> = ({ response, biotechNews }: IServerPr
       <Navbar />
       <main className={styles.container}>
         <div className="absolute top-20 text-xs text-center w-full">
-          <span>{!isEmpty(biotechNews) && biotechNews !== BIO_POSTS ? `/r/${biotechNews}` : '' }</span>
+          <span>
+            {!isEmpty(biotechNews) && biotechNews !== BIO_POSTS
+              ? `/r/${biotechNews}`
+              : ""}
+          </span>
         </div>
         <News newsPosts={response?.data?.children} />
+        {/* <div className="flex justify-between">
+          <Link href={`/${serializeQuery(bQuery)}`}>
+            <div className="flex items-center">
+              <BsArrowLeft className="text-2xl" />
+            </div>
+          </Link>
+          <Link href={`/${serializeQuery(aQuery)}`}>
+            <div className="flex items-center">
+              <BsArrowRight className="text-2xl" />
+            </div>
+          </Link>
+        </div> */}
       </main>
       <Footer />
     </div>
   );
 };
 export default RedditNews;
-

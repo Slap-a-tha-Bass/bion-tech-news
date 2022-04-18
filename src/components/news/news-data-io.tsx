@@ -1,5 +1,4 @@
-import { BASE_URL, BIO_POSTS, getThumbnail, isArray, isEmpty } from "@/utils";
-import { useEffect, useState } from "react";
+import { BIO_POSTS, getThumbnail, isArray, isEmpty } from "@/utils";
 
 export default function NewsDataIo({ newsPosts }: NewsDataIoProps) {
   if (!isArray(newsPosts) || newsPosts.length === 0) {

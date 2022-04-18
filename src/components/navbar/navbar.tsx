@@ -2,6 +2,7 @@ import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import { isEmpty } from "@/utils";
 
 export default function Navbar() {
   const [search, setSearch] = useState("");
@@ -9,13 +10,25 @@ export default function Navbar() {
   const onSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (router.pathname === "/reddit-news") {
-      router.push(`/reddit-news/?s=${search}`);
+      if (isEmpty(search)) {
+        router.push("/reddit-news");
+      } else {
+        router.push(`/reddit-news/?s=${search}`);
+      }
     }
     if (router.pathname === "/news-api-org") {
-      router.push(`/news-api-org/?s=${search}`);
+      if (isEmpty(search)) {
+        router.push("/news-api-org");
+      } else {
+        router.push(`/news-api-org/?s=${search}`);
+      }
     }
     if (router.pathname === "/news-data-io") {
-      router.push(`/news-data-io/?s=${search}`);
+      if (isEmpty(search)) {
+        router.push("/news-data-io");
+      } else {
+        router.push(`/news-data-io/?s=${search}`);
+      }
     }
   };
   return (
