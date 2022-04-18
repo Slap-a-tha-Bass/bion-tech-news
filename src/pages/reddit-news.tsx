@@ -91,18 +91,6 @@ const RedditNews: NextPage<IServerProps> = ({
           </span>
         </div>
         <News newsPosts={response?.data?.children} />
-        {/* <div className="flex justify-between">
-          <Link href={`/${serializeQuery(bQuery)}`}>
-            <div className="flex items-center">
-              <BsArrowLeft className="text-2xl" />
-            </div>
-          </Link>
-          <Link href={`/${serializeQuery(aQuery)}`}>
-            <div className="flex items-center">
-              <BsArrowRight className="text-2xl" />
-            </div>
-          </Link>
-        </div> */}
       </main>
       <Footer />
     </div>
