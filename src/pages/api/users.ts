@@ -21,7 +21,7 @@ async function createUsers(req: NextApiRequest, res: NextApiResponse) {
   try {
     const newEntry = await prisma.users.create({
       data: {
-        name: body.firstName,
+        name: body.name,
         email: body.email,
         password: body.password,
       },
