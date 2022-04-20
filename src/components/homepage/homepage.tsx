@@ -60,7 +60,7 @@ export default function Homepage() {
             className="flex justify-center"
             style={{ marginBottom: "-4rem" }}
           >
-            <Image src="/bion-logo.png" width={250} height={250} />
+            <Image src="/bion-logo.png" width={250} height={250} alt="logo" />
           </div>
           <h4 className="text-center text-2xl text-sky-600">
             Best Provider for Biotech News

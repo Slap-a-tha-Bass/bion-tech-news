@@ -37,9 +37,9 @@ export default function Navbar() {
         <div className="relative h-24 flex justify-between items-center">
           <div className="relative z-10">
             <div className="flex-shrink-0 flex items-center ">
-              <Link href="/">
+              <Link href="/" passHref>
                 <div className="pt-2 cursor-pointer hover:opacity-70">
-                  <Image src="/bion-logo.png" width={125} height={125} />
+                  <Image src="/bion-logo.png" width={125} height={125} alt="logo" />
                 </div>
               </Link>
             </div>
