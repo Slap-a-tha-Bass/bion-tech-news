@@ -3,8 +3,25 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { isEmpty } from "@/utils";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 
 export default function Navbar() {
+  // const { data: session } = useSession();
+  // if (session) {
+  //   return (
+  //     <>
+  //       Signed in as {session.user.name} <br />
+  //       <button onClick={() => signOut()}>Sign out</button>
+  //     </>
+  //   );
+  // }
+  // return (
+  //   <>
+  //     Not signed in <br />
+  //     <button onClick={() => signIn()}>Sign in</button>
+  //   </>
+  // );
   const [search, setSearch] = useState("");
   const router = useRouter();
   const onSubmit: FormEventHandler = (e) => {
