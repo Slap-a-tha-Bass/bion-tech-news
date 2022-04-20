@@ -14,7 +14,12 @@ export default function Homepage() {
           Signed in as {session.user.name}
         </p>
         <div className="flex justify-end">
-          <button className="px-1 rounded text-black text-xs" onClick={() => signOut()}>Sign out</button>
+          <button
+            className="px-1 rounded text-black text-xs"
+            onClick={() => signOut()}
+          >
+            Sign out
+          </button>
         </div>
         <div className="relative pt-16">
           <h4 className="text-center text-2xl text-sky-600">Select a source</h4>
@@ -63,5 +68,7 @@ export default function Homepage() {
         </div>
       </>
     );
+  } else {
+    return <></>;
   }
 }
