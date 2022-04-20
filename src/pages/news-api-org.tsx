@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         process.env.NEWS_API_API_KEY
       }${serializeQuery(query)}`
     );
-    console.log(response);
+
     const data: models.INewsApiResponse = await response.json();
 
     return {

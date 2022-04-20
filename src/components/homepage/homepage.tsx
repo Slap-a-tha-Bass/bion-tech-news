@@ -2,7 +2,7 @@ import NewsApiLogo from "@/logos/newsApiLogo";
 import NewsDataIoLogo from "@/logos/newsDataIoLogo";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { BsReddit } from "react-icons/bs";
 
 export default function Homepage() {
