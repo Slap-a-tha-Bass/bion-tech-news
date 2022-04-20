@@ -23,7 +23,7 @@ export default function PrivateRoute({
         <div className="flex justify-center py-32">
           <button
             className="p-2 rounded-lg text-md text-sky-300 shadow-lg shadow-sky-400"
-            onClick={() => signIn("github")}
+            onClick={() => signIn()}
           >
             Sign in
           </button>
