@@ -3,25 +3,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { isEmpty } from "@/utils";
-import { useSession, signIn, signOut } from "next-auth/react";
-
 
 export default function Navbar() {
-  // const { data: session } = useSession();
-  // if (session) {
-  //   return (
-  //     <>
-  //       Signed in as {session.user.name} <br />
-  //       <button onClick={() => signOut()}>Sign out</button>
-  //     </>
-  //   );
-  // }
-  // return (
-  //   <>
-  //     Not signed in <br />
-  //     <button onClick={() => signIn()}>Sign in</button>
-  //   </>
-  // );
   const [search, setSearch] = useState("");
   const router = useRouter();
   const onSubmit: FormEventHandler = (e) => {
@@ -55,7 +38,7 @@ export default function Navbar() {
           <div className="relative z-10">
             <div className="flex-shrink-0 flex items-center ">
               <Link href="/">
-                <div className="pt-2 cursor-pointer hover:brightness-150">
+                <div className="pt-2 cursor-pointer hover:opacity-70">
                   <Image src="/bion-logo.png" width={125} height={125} />
                 </div>
               </Link>
@@ -66,7 +49,7 @@ export default function Navbar() {
               <input
                 type="search"
                 placeholder="Search Biotech News"
-                className="block w-full bg-sky-600 border border-sky-800 placeholder-white rounded-lg py-2 px-3 text-sm text-white opacity-60 focus:opacity-100 focus:outline-none"
+                className="block w-full bg-sky-600 border border-sky-800 placeholder-white rounded-lg py-2 px-3 text-sm text-white opacity-90 focus:opacity-100 focus:outline-none"
                 value={search}
                 onChange={(e) => setSearch(e.currentTarget.value)}
               />

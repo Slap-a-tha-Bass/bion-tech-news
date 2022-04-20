@@ -3,6 +3,8 @@ import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
 import type { NextPage, GetServerSideProps } from "next";
+import { useSession } from "next-auth/react";
+
 import {
   BASE_URL2,
   BIO_POSTS,
@@ -13,10 +15,6 @@ import {
   serializeQuery,
 } from "@/utils";
 import ApiNewsOrg from "@/components/news/news-api-org";
-import NewsApiLogo from "@/logos/newsApiLogo";
-import NewsDataIoLogo from "@/logos/newsDataIoLogo";
-import Link from "next/link";
-import { BsReddit } from "react-icons/bs";
 
 interface IServerProps {
   response: models.INewsApiResponse;
@@ -34,9 +32,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     delete query.s;
 
     const response = await fetch(
-      `${BASE_URL2}${EVERYTHING}${biotechNews}${PRE_API}${process.env.NEWS_API_API_KEY}${serializeQuery(
-        query
-      )}`
+      `${BASE_URL2}${EVERYTHING}${biotechNews}${PRE_API}${
+        process.env.NEWS_API_API_KEY
+      }${serializeQuery(query)}`
     );
     console.log(response);
     const data: models.INewsApiResponse = await response.json();
@@ -61,6 +59,8 @@ const NewsApiOrg: NextPage<IServerProps> = ({
   response,
   biotechNews,
 }: IServerProps) => {
+  const { data: session, status } = useSession();
+  console.log({session, status});
   return (
     <div className={styles.container}>
       <Head>
