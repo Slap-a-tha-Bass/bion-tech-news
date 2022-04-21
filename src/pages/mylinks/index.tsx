@@ -34,9 +34,11 @@ export default function MyLinks() {
           </div>
         </Link>
       </div>
-      <Link href="/" passHref>
-        Back to sources
-      </Link>
+      <div className="flex justify-center">
+        <Link href="/" passHref>
+          Back to sources
+        </Link>
+      </div>
     </>
   );
 }

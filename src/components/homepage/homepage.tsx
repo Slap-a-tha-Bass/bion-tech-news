@@ -16,7 +16,7 @@ export default function Homepage() {
       <>
         <div className="flex justify-between">
           <Link href="/mylinks" passHref>
-            My Links
+            <span className="text-lg font-bold">My Links</span>
           </Link>
           <p className="text-gray-500 text-right text-xs">
             Signed in as {session.user.name}
