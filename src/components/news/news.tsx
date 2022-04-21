@@ -19,7 +19,7 @@ export default function News({ newsPosts }: NewsProps) {
       <div>
         {newsPosts.map((p) => {
           return (
-            <div className="" key={p.data.id}>
+            <div key={p.data.id}>
               <a
                 className="relative rounded-lg border border-gray-300 bg-sky-100 hover:bg-sky-600 px-6 py-5 shadow-sm flex items-center space-x-3 my-2 hover:border-gray-400"
                 href={
