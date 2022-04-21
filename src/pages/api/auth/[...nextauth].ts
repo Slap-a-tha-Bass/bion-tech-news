@@ -6,13 +6,13 @@ import GithubProvider from 'next-auth/providers/github';
 const prisma = new PrismaClient();
 
 export default NextAuth({
-  adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  session: {strategy: "jwt"},
   debug: process.env.NODE_ENV !== "production",
   secret: process.env.AUTH_SECRET,
     jwt: {

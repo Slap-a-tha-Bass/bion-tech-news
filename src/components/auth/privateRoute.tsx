@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Image from "next/image";
@@ -10,14 +10,15 @@ export default function PrivateRoute({
   const router = useRouter();
   const { status } = useSession();
 
-  if (status === "unauthenticated") {
+  if (status === "authenticated") {
     return (
       <>
         <p className="text-right text-xs text-gray-500">Not signed in</p>
         <div className="flex justify-center py-32">
           <button
+            type="button"
             className="p-2 rounded-lg text-md text-sky-300 shadow-lg shadow-sky-400"
-            onClick={() => signIn()}
+            onClick={() => signOut()}
           >
             Sign in
           </button>
