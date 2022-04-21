@@ -3,7 +3,6 @@ import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import styles from "@/styles/Home.module.css";
 import News from "@/components/news/news";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import type { NextPage, GetServerSideProps } from "next";
 import {
   BASE_URL,
@@ -14,6 +13,8 @@ import {
   SUFFIX,
 } from "@/utils";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import Router from "next/router";
 
 interface IServerProps {
   response: models.IRedditResponse;
@@ -56,6 +57,10 @@ const RedditNews: NextPage<IServerProps> = ({
   response,
   biotechNews,
 }: IServerProps) => {
+  const { status } = useSession();
+  if (status === "unauthenticated") {
+    Router.push("/login");
+  }
   return (
     <div className={styles.container}>
       <Head>

@@ -15,6 +15,7 @@ import {
   serializeQuery,
 } from "@/utils";
 import ApiNewsOrg from "@/components/news/news-api-org";
+import Router from "next/router";
 
 interface IServerProps {
   response: models.INewsApiResponse;
@@ -59,8 +60,10 @@ const NewsApiOrg: NextPage<IServerProps> = ({
   response,
   biotechNews,
 }: IServerProps) => {
-  const { data: session, status } = useSession();
-  console.log({session, status});
+  const { status } = useSession();
+  if (status === "unauthenticated") {
+    Router.push("/login");
+  }
   return (
     <div className={styles.container}>
       <Head>

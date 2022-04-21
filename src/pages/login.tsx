@@ -1,5 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import Router from "next/router";
+
 export default function Login() {
   const { status } = useSession();
   const handleSignIn = () => {

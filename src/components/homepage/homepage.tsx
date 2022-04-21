@@ -2,11 +2,15 @@ import NewsApiLogo from "@/logos/newsApiLogo";
 import NewsDataIoLogo from "@/logos/newsDataIoLogo";
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { BsReddit } from "react-icons/bs";
 
 export default function Homepage() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  if (status === "unauthenticated") {
+    Router.push("/login");
+  }
   if (session) {
     return (
       <>

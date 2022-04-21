@@ -12,6 +12,8 @@ import {
   serializeQuery,
 } from "@/utils";
 import NewsDataIo from "@/components/news/news-data-io";
+import { useSession } from "next-auth/react";
+import Router from "next/router";
 
 interface IServerProps {
   response: models.INewsDataResponse;
@@ -56,6 +58,10 @@ const NewsDataIoNews: NextPage<IServerProps> = ({
   response,
   biotechNews,
 }: IServerProps) => {
+  const { status } = useSession();
+  if (status === "unauthenticated") {
+    Router.push("/login");
+  }
   return (
     <div className={styles.container}>
       <Head>
