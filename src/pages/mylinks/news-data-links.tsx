@@ -4,7 +4,7 @@ import { BiLeftArrow } from "react-icons/bi";
 
 export default function MyRedditLinks() {
   const [myLinks, setMyLinks] = useState("");
-  let [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
+  const [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
     [{ title: "", link: "" }]
   );
 

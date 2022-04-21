@@ -8,19 +8,21 @@ export default function MyRedditLinks() {
     [{ title: "", link: "" }]
   );
 
-  const links = localStorage.getItem("news-api-links");
-  if (links) {
-    const parsedLinks = JSON.parse(links);
-    const title = parsedLinks.map(
-      (data: { title: string }, index: number) => data.title
-    );
-    const link = parsedLinks.map(
-      (data: { url: string }, index: number) => data.url
-    );
-    setMyLinks(links);
-    linkArray.push({ title, link });
-    console.log({ parsedLinks, title, link });
-  }
+  useEffect(() => {
+    const links = localStorage.getItem("news-api-links");
+    if (links) {
+      const parsedLinks = JSON.parse(links);
+      const title = parsedLinks.map(
+        (data: { title: string }, index: number) => data.title
+      );
+      const link = parsedLinks.map(
+        (data: { url: string }, index: number) => data.url
+      );
+      setMyLinks(links);
+      linkArray.push({ title, link });
+      console.log({ parsedLinks, title, link });
+    }
+  }, [linkArray]);
 
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
