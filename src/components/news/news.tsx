@@ -4,6 +4,8 @@ import { BsFillPinAngleFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 export default function News({ newsPosts }: NewsProps) {
+  const [links, setLinks] = useState<models.INewsPost[]>([]);
+
   if (!isArray(newsPosts) || newsPosts.length === 0) {
     return (
       <div className="pt-10 text-center text-lg">
@@ -11,7 +13,6 @@ export default function News({ newsPosts }: NewsProps) {
       </div>
     );
   }
-  const [links, setLinks] = useState<models.INewsPost[]>([]);
 
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
@@ -61,7 +62,7 @@ export default function News({ newsPosts }: NewsProps) {
                       icon: "success",
                       confirmButtonText: "Cool",
                       confirmButtonColor: "#0284c7",
-                    })
+                    });
                   }}
                 >
                   <BsFillPinAngleFill />
