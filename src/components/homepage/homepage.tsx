@@ -14,9 +14,14 @@ export default function Homepage() {
   if (session) {
     return (
       <>
-        <p className="text-gray-500 text-right text-xs">
-          Signed in as {session.user.name}
-        </p>
+        <div className="flex justify-between">
+          <Link href="/mylinks" passHref>
+            My Links
+          </Link>
+          <p className="text-gray-500 text-right text-xs">
+            Signed in as {session.user.name}
+          </p>
+        </div>
         <div className="flex justify-end">
           <button
             className="px-1 rounded text-black text-xs"
