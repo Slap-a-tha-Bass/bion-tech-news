@@ -1,12 +1,22 @@
 import NewsApiLogo from "@/logos/newsApiLogo";
 import NewsDataIoLogo from "@/logos/newsDataIoLogo";
 import Link from "next/link";
+import Router from "next/router";
+import { BiLeftArrow } from "react-icons/bi";
 import { BsReddit } from "react-icons/bs";
 
 export default function MyLinks() {
   return (
     <>
-      <h1 className="text-center text-4xl py-8">My Saved Links</h1>
+      <div className="flex justify-center items-center pb-16">
+        <button
+          className="bg-transparent text-xl hover:bg-transparent hover:text-sky-600 mx-4"
+          onClick={() => Router.back()}
+        >
+          <BiLeftArrow />
+        </button>
+        <h1 className="text-4xl text-center py-8">My Saved Links</h1>
+      </div>
       <div className="flex justify-center items-center py-8">
         <Link href="/mylinks/reddit-links" passHref>
           <div className="text-5xl text-orange-600 bg-white hover:opacity-70 rounded-full border-none cursor-pointer mr-4">
@@ -24,6 +34,9 @@ export default function MyLinks() {
           </div>
         </Link>
       </div>
+      <Link href="/" passHref>
+        Back to sources
+      </Link>
     </>
   );
 }

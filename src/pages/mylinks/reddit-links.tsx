@@ -16,14 +16,13 @@ export default function MyRedditLinks() {
         (data: { data: { title: string } }, index: number) => data.data.title
       );
       const link = parsedLinks.map(
-        (data: { data: { permalink: string } }, index: number) =>
-          data.data.permalink
+        (data: { data: { url: string } }, index: number) => data.data.url
       );
       setMyLinks(links);
       linkArray.push({ title, link });
       console.log({ parsedLinks, title, link });
     }
-  }, [linkArray]);
+  }, []);
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">

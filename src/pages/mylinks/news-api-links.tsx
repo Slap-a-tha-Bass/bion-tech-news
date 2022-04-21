@@ -22,7 +22,7 @@ export default function MyRedditLinks() {
       linkArray.push({ title, link });
       console.log({ parsedLinks, title, link });
     }
-  }, [linkArray]);
+  }, []);
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">
