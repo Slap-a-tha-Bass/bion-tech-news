@@ -3,8 +3,10 @@ import Footer from "@/components/footer/footer";
 import Homepage from "@/components/homepage/homepage";
 import styles from "@/styles/Home.module.css";
 import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
+  const { status } = useSession();
   return (
     <div className={styles.container}>
       <Head>
@@ -33,6 +35,7 @@ const Home: NextPage = () => {
       <main className={styles.container}>
         <Homepage />
       </main>
+
       <Footer />
     </div>
   );

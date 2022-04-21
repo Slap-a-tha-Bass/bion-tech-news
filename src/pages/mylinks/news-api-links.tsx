@@ -3,25 +3,17 @@ import { useEffect, useState } from "react";
 import { BiLeftArrow } from "react-icons/bi";
 
 export default function MyRedditLinks() {
-  const [myLinks, setMyLinks] = useState("");
-  const [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
-    [{ title: "", link: "" }]
+  const [linkArray, setLinkArray] = useState<{ title: string; link: string }[]>(
+    []
   );
 
   useEffect(() => {
-    const links = localStorage.getItem("news-api-links");
+    const links = localStorage.getItem("news-data-links");
     if (links) {
-      const parsedLinks = JSON.parse(links);
-      const title = parsedLinks.map(
-        (data: { title: string }, index: number) => data.title
-      );
-      const link = parsedLinks.map(
-        (data: { url: string }, index: number) => data.url
-      );
-      setMyLinks(links);
-      linkArray.push({ title, link });
+      const parsedLinks: { title: string; link: string }[] = JSON.parse(links);
+      setLinkArray((prevState) => [...prevState, ...parsedLinks]);
     }
-  }, [linkArray]);
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">

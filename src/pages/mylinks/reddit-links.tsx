@@ -21,7 +21,18 @@ export default function MyRedditLinks() {
       setMyLinks(links);
       linkArray.push({ title, link });
     }
-  }, []);
+  }, [linkArray]);
+  // const [linkArray, setLinkArray] = useState<{ title: string; link: string }[]>(
+  //   []
+  // );
+
+  // useEffect(() => {
+  //   const links = localStorage.getItem("links");
+  //   if (links) {
+  //     const parsedLinks: { title: string; link: string }[] = JSON.parse(links).data;
+  //     setLinkArray((prevState) => [...prevState, ...parsedLinks]);
+  //   }
+  // }, []);
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">
