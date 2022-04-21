@@ -13,7 +13,7 @@ export default function MyLinks() {
             setMyLinks(links);
         }
         console.log({myLinks});
-    }, [])
+    }, [myLinks]);
     return (
         <h1>{myLinks}</h1>
     )
