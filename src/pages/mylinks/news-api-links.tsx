@@ -8,25 +8,27 @@ export default function MyRedditLinks() {
     [{ title: "", link: "" }]
   );
 
-  useEffect(() => {
-    const links = localStorage.getItem("news-api-links");
-    if (links) {
-      const parsedLinks = JSON.parse(links);
-      const title = parsedLinks.map(
-        (data: { title: string }, index: number) => data.title
-      );
-      const link = parsedLinks.map(
-        (data: { url: string }, index: number) => data.url
-      );
-      setMyLinks(links);
-      linkArray.push({ title, link });
-      console.log({ parsedLinks, title, link });
-    }
-  }, []);
+  const links = localStorage.getItem("news-api-links");
+  if (links) {
+    const parsedLinks = JSON.parse(links);
+    const title = parsedLinks.map(
+      (data: { title: string }, index: number) => data.title
+    );
+    const link = parsedLinks.map(
+      (data: { url: string }, index: number) => data.url
+    );
+    setMyLinks(links);
+    linkArray.push({ title, link });
+    console.log({ parsedLinks, title, link });
+  }
+
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">
-        <button className="bg-transparent text-xl hover:bg-transparent hover:text-sky-600 mx-4" onClick={() => Router.back()}>
+        <button
+          className="bg-transparent text-xl hover:bg-transparent hover:text-sky-600 mx-4"
+          onClick={() => Router.back()}
+        >
           <BiLeftArrow />
         </button>
         <h1 className="text-4xl text-center py-8">My NewsAPI Links</h1>
