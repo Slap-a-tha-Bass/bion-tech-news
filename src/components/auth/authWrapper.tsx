@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import PrivateRoute from "./privateRoute";
 
-const authRoutes = ["/reddit-news", "/news-api-org", "/news-data-io"];
+const authRoutes = ["/", "/reddit-news", "/news-api-org", "/news-data-io"];
 
 export default function AuthWrapper({
   children,
@@ -17,7 +17,7 @@ export default function AuthWrapper({
     return (
       <div className="flex justify-center items-center">
         <div className="rounded-full bg-sky-600">
-          <div className="animate-spin"></div>
+          <div className="animate-spin">Loading...</div>
         </div>
       </div>
     );

@@ -1,14 +1,16 @@
 import { signIn } from "next-auth/react";
 
 export default function Login() {
+  const handleSignIn = () => {
+    signIn("github", {
+      redirectTo: "/",
+    });
+  };
   return (
     <div className="flex justify-center py-32">
-      <p className="text-right text-xs text-gray-500">Not signed in</p>
       <button
         className="p-2 rounded-lg text-md text-sky-300 shadow-lg shadow-sky-400"
-        onClick={() => signIn("github", {
-          callbackUrl: "http://bion-tech.vercel.app/",
-        })}
+        onClick={handleSignIn}
       >
         Sign in
       </button>
