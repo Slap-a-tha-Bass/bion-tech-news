@@ -18,9 +18,8 @@ export default function ApiNewsOrg({ newsPosts }: ApiNewsOrgProps) {
       <div>
         {newsPosts.map((p) => {
           return (
-            <div>
+            <div key={`${p.source.id}-${p.title}`}>
               <a
-                key={`${p.source.id}-${p.title}`}
                 className="relative rounded-lg border border-gray-300 bg-sky-100 hover:bg-sky-600 px-6 py-5 shadow-sm flex items-center space-x-3 my-2 hover:border-gray-400"
                 href={isEmpty(p.url) ? BIO_POSTS : `${p.url}`}
                 target="_blank"
