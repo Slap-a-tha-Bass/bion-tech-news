@@ -4,7 +4,7 @@ import { BiLeftArrow } from "react-icons/bi";
 
 export default function MyRedditLinks() {
   const [myLinks, setMyLinks] = useState("");
-  const [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
+  let [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
     [{ title: "", link: "" }]
   );
 
@@ -22,7 +22,7 @@ export default function MyRedditLinks() {
       linkArray.push({ title, link });
       console.log({ parsedLinks, title, link });
     }
-  }, []);
+  }, [linkArray]);
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">
