@@ -1,11 +1,16 @@
 import NewsApiLogo from "@/logos/newsApiLogo";
 import NewsDataIoLogo from "@/logos/newsDataIoLogo";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Router from "next/router";
 import { BiLeftArrow } from "react-icons/bi";
 import { BsReddit } from "react-icons/bs";
 
 export default function MyLinks() {
+  const { status } = useSession();
+  if (status === "unauthenticated") {
+    Router.push("/login");
+  }
   return (
     <>
       <div className="flex justify-center items-center pb-16">

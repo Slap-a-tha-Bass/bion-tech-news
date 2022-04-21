@@ -20,7 +20,6 @@ export default function MyRedditLinks() {
       );
       setMyLinks(links);
       linkArray.push({ title, link });
-      console.log({ parsedLinks, title, link });
     }
   }, [linkArray]);
   return (
