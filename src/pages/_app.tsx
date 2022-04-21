@@ -6,7 +6,9 @@ import AuthWrapper from "@/components/auth/authWrapper";
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <AuthWrapper>
+        <Component {...pageProps} />
+      </AuthWrapper>
     </SessionProvider>
   );
 }
