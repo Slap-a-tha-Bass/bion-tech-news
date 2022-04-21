@@ -14,7 +14,13 @@ export default function AuthWrapper({
   const { status } = useSession();
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center">
+        <div className="rounded-full bg-sky-600">
+          <div className="animate-spin"></div>
+        </div>
+      </div>
+    );
   }
 
   return (
