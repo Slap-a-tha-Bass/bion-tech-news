@@ -30,7 +30,7 @@ export default function Homepage() {
             Sign out
           </button>
         </div>
-        <div className="relative pt-16">
+        <div className="relative pt-2">
           <h4 className="text-center text-2xl text-sky-600">Select a source</h4>
           <div className="flex justify-center items-center py-8">
             <Link href="/reddit-news" passHref>
