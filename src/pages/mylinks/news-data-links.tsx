@@ -3,17 +3,25 @@ import { useEffect, useState } from "react";
 import { BiLeftArrow } from "react-icons/bi";
 
 export default function MyRedditLinks() {
-  const [linkArray, setLinkArray] = useState<{ title: string; link: string }[]>(
-    []
+  const [myLinks, setMyLinks] = useState("");
+  const [linkArray, setLinkArray] = useState<[{ title: string; link: string }]>(
+    [{ title: "", link: "" }]
   );
 
   useEffect(() => {
     const links = localStorage.getItem("news-data-links");
     if (links) {
-      const parsedLinks: { title: string; link: string }[] = JSON.parse(links);
-      setLinkArray((prevState) => [...prevState, ...parsedLinks]);
+      const parsedLinks = JSON.parse(links);
+      const title = parsedLinks.map(
+        (data: {title: string }) => data.title
+      );
+      const link = parsedLinks.map(
+        (data: {link: string }) => data.link
+      );
+      setMyLinks(links);
+      linkArray.push({ title, link });
     }
-  }, []);
+  }, [linkArray]);
   return (
     <div className="max-w-2xl mx-auto pt-1 pb-10">
       <div className="flex justify-center items-center">
